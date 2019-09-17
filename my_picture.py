@@ -1,6 +1,17 @@
 from graphics import *
 w = GraphWin("MyWin", 400, 400)
 
+l_0 = Rectangle(Point(0, 200), Point(400, 400))
+l_0.draw(w)
+l_0.setFill("#339900")
+l_00 = Rectangle(Point(0, 0), Point(400, 200))
+l_00.draw(w)
+l_00.setFill("#99FFFF")
+
+sun = Circle(Point(100, 100), 50)
+sun.draw(w)
+sun.setFill("#FFCC00")
+
 r_1 = Rectangle(Point(100, 200), Point(300, 390))
 
 r_1.draw(w)
