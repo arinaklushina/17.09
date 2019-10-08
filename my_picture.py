@@ -1,29 +1,23 @@
 from graphics import *
 w = GraphWin("MyWin", 1000, 1000)
 
-l_0 = Rectangle(Point(0,500), Point(1000, 1000))
-l_0.draw(w)
-l_0.setFill("#339900")
-l_00 = Rectangle(Point(0, 0), Point(1000, 500))
-l_00.draw(w)
-l_00.setFill("#99FFFF")
 
 def domik(x=0,y=0,k=1,color_dom='#FF9900',color_wind='#6666FF',color_roof='#FFFF00',color_left_eye='blue',color_right_eye='blue',t1=True,t2=True,t3=True,t4=True):
     a = x+100
     b = y+200
 
-    r_1 = Rectangle(Point(a,b), Point(a+k*200, b+k*220))           #коробка дома
+    r_1 = Rectangle(Point(a,b), Point(a+k*200, b+k*220))           # box house
 
     r_1.draw(w)
     r_1.setFill(color_dom)
 
-    r_2 = Rectangle(Point(a+k*50, b+k*75), Point(a+k*150, b+k*175))           #окно
+    r_2 = Rectangle(Point(a+k*50, b+k*75), Point(a+k*150, b+k*175))           # window
     r_2.setWidth(k*6)
     r_2.draw(w)
     r_2.setFill(color_wind)
 
 
-    p = Polygon(Point(a-k*50,b), Point(a+k*100,b-k*150), Point(a+k*250,b))       #крыша
+    p = Polygon(Point(a-k*50,b), Point(a+k*100,b-k*150), Point(a+k*250,b))       # roof
     p.setWidth(k*7)
     p.draw(w)
     p.setFill(color_roof)
@@ -73,15 +67,16 @@ def girl(x=0,y=0,k=1,color_head='#fac3b5',color_body='#d0608b'):
     g_body.draw(w)
 
 
-def sun (x=100,y=100,k=1):
+def sun (x=100,y=100,k=1,t=True):
     sun = Circle(Point(x,y), k*50)
-    sun.draw(w)
+    if t==True:
+        sun.draw(w)
     sun.setFill("#FFCC00")
 
 
 def tree(x=0,y=0,k=1,color_floor='green',color_trunk='brown'):
-    a = x+300
-    b = y+200
+    a = x+50
+    b = y+250
     g_trunk = Rectangle(Point(a,b), Point(a+k*50, b+k*290))
     g_floor1 = Polygon(Point(a-k*120, b+k*220), Point(a+k*190, b+k*220), Point(a+k*25, b+k*100))
     g_floor2 = Polygon(Point(a-k*90, b+k*140), Point(a+k*140, b+k*140), Point(a+k*25, b+k*40))
@@ -98,22 +93,45 @@ def tree(x=0,y=0,k=1,color_floor='green',color_trunk='brown'):
     g_floor3.draw(w)
 
 
-domik(300,450,1,'brown','cyan','white','blue','blue',True,False,False,True)
-domik(600,100,0.7)
-domik(0,100,0.5,'orange','pink','brown')
+def cloud(x=100,y=100,k=1):
+    clouds = Circle(Point(x,y),k*30)
+    clouds.setFill('grey')
 
-girl(200,450,2)
+    clouds.draw(w)
 
-sun(500,60,3)
 
-tree(0,0,0.5)
-tree(80,0,0.5)
-tree(120,50,0.7)
-tree(200,60,0.8)
-tree(300,100,0.9)
-tree(50,300,0.4)
-tree(400,400,1.2)
 
+# main function
+
+def main():
+    l_0 = Rectangle(Point(0,500), Point(1000, 1000))
+    l_0.draw(w)
+    l_0.setFill("#339900")
+    l_00 = Rectangle(Point(0, 0), Point(1000, 500))
+    l_00.draw(w)
+    l_00.setFill("#99FFFF")
+
+    domik(300,450,1,'brown','cyan','white','blue','blue',False,False,False,False)
+    domik(560,200,0.7)
+    domik(50,480,0.4,'orange','pink','brown')
+
+    #girl(200,450,1)
+
+    sun(500,60,3,True)
+
+    tree(0,0,0.5)
+    tree(10,0,0.5)
+    tree(20,0,0.7)
+    tree(30,0,0.8)
+    tree(40,0,0.9)
+    tree(50,0,0.4)
+    tree(60,0,1.2)
+
+    cloud(50,50,1)
+    cloud(50,50,0.5)
+    cloud(50,50,2)
+
+main()
 
 w.getMouse()
 w.close()
